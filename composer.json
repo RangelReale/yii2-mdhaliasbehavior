@@ -1,5 +1,5 @@
 {
-    "name": "RangelReale/yii2-mdhaliasbehavior",
+    "name": "rangelreale/yii2-mdhaliasbehavior",
     "description": "Yii behavior for model attribute aliasing and format conversion using PHP MDH",
     "keywords": ["yii2", "format", "behavior", "model"],
     "license": "BSD-3-Clause",
@@ -13,7 +13,7 @@
     "type": "yii2-extension",
     "require": {
         "yiisoft/yii2": "*",
-        "RangelReale/mdh": "*"
+        "rangelreale/mdh": "*"
     },
     "autoload": {
         "psr-4": {
