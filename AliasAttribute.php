@@ -104,10 +104,10 @@ class AliasAttribute extends Object
             if ($originalValue === null)
                 return $this->nullValue;
             
-            $originalValue = $this->behavior->mdh->parse($this->behavior->sourceConverter, 
+            $originalValue = $this->getMdh()->parse($this->behavior->sourceConverter, 
                 $this->sourceDataType, $originalValue, ['format'=>$this->dataTypeFormat, '_aliasattribute'=>$this]);
 
-            return $this->behavior->mdh->format($this->behavior->outputConverter, 
+            return $this->getMdh()->format($this->behavior->outputConverter, 
                 $this->outputDataType, $originalValue, ['format'=>$this->dataTypeFormat, '_aliasattribute'=>$this]);
         } catch (DataConversionException $e) {
             return $this->nullValue;
@@ -123,10 +123,10 @@ class AliasAttribute extends Object
         
         try
         {
-            $value = $this->behavior->mdh->parse($this->behavior->outputConverter, 
+            $value = $this->getMdh()->parse($this->behavior->outputConverter, 
                 $this->outputDataType, $value, ['format'=>$this->dataTypeFormat, '_aliasattribute'=>$this]);
 
-            $value = $this->behavior->mdh->format($this->behavior->sourceConverter, 
+            $value = $this->getMdh()->format($this->behavior->sourceConverter, 
                 $this->sourceDataType, $value, ['format'=>$this->dataTypeFormat, '_aliasattribute'=>$this]);
             
             $this->behavior->owner->{$this->originalAttribute} = $value;        
@@ -143,5 +143,12 @@ class AliasAttribute extends Object
     {
         $this->_value = null;
         $this->_error = null;
+    }
+    
+    private function getMdh()
+    {
+        if (isset($this->behavior->mdh))
+            return $this->behavior->mdh;
+        return \Yii::$app->mdh;
     }
 }
