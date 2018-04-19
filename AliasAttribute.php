@@ -2,7 +2,7 @@
 
 namespace RangelReale\mdhaliasbehavior;
 
-use yii\base\Object;
+use yii\base\BaseObject;
 use RangelReale\mdh\IDataHandler;
 use RangelReale\mdh\DataConversionException;
 
@@ -10,7 +10,7 @@ use RangelReale\mdh\DataConversionException;
  * Class AliasAttribute
  * @property string $value
  */
-class AliasAttribute extends Object
+class AliasAttribute extends BaseObject
 {
     /**
      * @var AliasBehavior
